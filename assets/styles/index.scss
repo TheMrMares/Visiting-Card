@@ -1,9 +1,15 @@
-// Apply a natural box layout model to all elements
-// but allowing components to change
-// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-html {
+@import 'templates.scss';
+@import 'variables.scss';
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: red
+}
+* {
     box-sizing: border-box;
 }
-*, *:before, *:after {
-    box-sizing: inherit;
+img {
+    position: relative;
+    max-width: 100%;
 }

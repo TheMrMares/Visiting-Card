@@ -1,10 +1,7 @@
-/**
- * Application entry point
- */
-
 // Load application styles
 import 'styles/index.scss';
 
-// ================================
-// START YOUR APP HERE
-// ================================
+// Your app
+document.addEventListener('DOMContentLoaded', () => {
+console.log('xd');
+});
