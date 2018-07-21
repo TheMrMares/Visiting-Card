@@ -27,12 +27,26 @@ img {
 
 //proper tiles
 .intro {
-    background: $dark;
+    background: rgba(0,0,0,0);
 }
 .about {
     background: $smoothdark;
 }
-
+.footer {
+    background: $dark;
+}
+//video bckg
+.vdbckg {
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    video {
+        width: 100%;
+        height: 100%;
+    }
+}
 //sidebar
 .sidebar {
     position: fixed;
