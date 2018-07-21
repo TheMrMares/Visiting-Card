@@ -6,11 +6,10 @@ import 'videos/gm.mp4';
 import {Sidebar} from './classes/Sidebar';
 
 document.addEventListener('DOMContentLoaded', () => {
+
     let sb = new Sidebar();
-    sb.anchors.forEach((item, index)=>{
-        console.log(item.y);
-    })
-    document.addEventListener('scroll', ()=> {
+    document.querySelectorAll('.container')[0].addEventListener('scroll', ()=> {
         sb.inMove();
     })
+
 });

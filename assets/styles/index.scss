@@ -7,6 +7,17 @@ html, body {
     padding: 0;
     color: $fair;
     font-family: 'Oswald', sans-serif;
+    width: 100%;
+	height: 100%;
+	overflow-y: hidden;
+}
+.container{
+	width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 17px;
+    box-sizing: content-box;
+    right: 0;
 }
 * {
     box-sizing: border-box;
@@ -18,7 +29,7 @@ img {
 
 //overall
 .tile {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 .intile {
@@ -45,6 +56,7 @@ img {
     video {
         width: 100%;
         height: 100%;
+        filter: brightness(75%) contrast(130%) saturate(170%);
     }
 }
 //sidebar
@@ -55,6 +67,7 @@ img {
     top: 0;
     height: 100vh;
     width: 15%;
+    border: 1px solid red;
 }
 .sidebar__wrapper {
     height: 100%;
@@ -62,7 +75,7 @@ img {
     position: relative;
 }
 .sidebar__container {
-    transform: translateY(50%);
+    transform: translateY(-50%);
     position: absolute;
     top: 50%;
     right: 0;
@@ -71,12 +84,16 @@ img {
 .sidebar__list, .sidebar__pointer {
     float: left;
     height: 100%;
-    border: 1px solid blue;
 }
 .sidebar__list {
     width: 65%;
 }
 .sidebar__item {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.sidebar__point {
     float: left;
     width: 100%;
 }
