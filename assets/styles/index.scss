@@ -178,9 +178,32 @@ img {
     font-size: 1.3em;
     color: $fair;
     text-transform: uppercase;
-    border-bottom: solid;
-    border-color: rgba(0,0,0,0);
-    border-width: 3px;
+    border-bottom: 3px solid rgba(0,0,0,0);
+    position: relative;
+    &:hover{
+        &::before{
+            width: 100%;
+            animation: 0.25s ease sweep;
+        }
+    }
+    &:before{
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        width: 0%;
+        height: 100%;
+        background: $special;
+        z-index: -1;
+    }
+}
+@keyframes sweep {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
 }
 .sidebar__point {
     grid-column-start: 2;
