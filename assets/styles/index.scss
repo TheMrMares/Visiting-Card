@@ -23,7 +23,12 @@ html, body {
         box-sizing: border-box;
     }
 }
-
+button {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Oswald', sans-serif;
+}
 img {
     position: relative;
     max-width: 100%;
@@ -80,7 +85,7 @@ img {
 //sidebar
 .sidebar {
     position: fixed;
-    right: 30px;
+    right: 0px;
     top: 0;
     height: 100vh;
     width: 20%;
@@ -89,17 +94,37 @@ img {
     height: 100%;
     width: 100%;
     position: relative;
+    float: left;
 }
 .sidebar__container {
     transform: translateY(-50%);
     position: absolute;
     top: 50%;
-    right: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 1.3em;
+    right: 38px;
     width: 100%;
     white-space: nowrap;
+}
+.sidebar__markerHolder {
+    position: absolute;
+    height: 100%;
+    top:0;
+    right:0;
+}
+.sidebar__marker {
+    margin: 0px 2px;
+    position: relative;
+    width: 2px;
+    height: 100%;
+    float: right;
+    float: right;
+}
+.sidebar__fluid {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 0%;
+    background: rgba($fair,1);
 }
 .sidebar__cupholder {
     display: grid;
@@ -114,7 +139,15 @@ img {
     grid-column-end: 1;
     grid-row-end:1;
     transition: 0.25s ease;
-    padding: 0px 10px;
+    margin: 0px 10px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: $fair;
+    text-transform: uppercase;
+    border-bottom: solid;
+    border-color: rgba(0,0,0,0);
+    border-width: 3px;
 }
 .sidebar__point {
     grid-column-start: 2;
@@ -123,9 +156,9 @@ img {
     grid-row-end:1;
 }
 .sidebar__inpoint {
-    height: 50%;
+    height: 20%;
     width: 0%;
-    background: $fair;
+    background: rgba($fair, 0.05);
     display: block;
-    float: right;
+    float: left;
 }

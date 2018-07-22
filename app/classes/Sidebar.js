@@ -15,7 +15,7 @@ export class Sidebar {
             newCupholder.classList.add('sidebar__cupholder');
             this.container.appendChild(newCupholder);
 
-            let newItem = document.createElement('div');
+            let newItem = document.createElement('button');
             newItem.classList.add('sidebar__item');
             newItem.innerText = title;
             newCupholder.appendChild(newItem);
@@ -45,21 +45,23 @@ export class Sidebar {
     }
     inMove() {
         let scrollTop = document.querySelectorAll('.container')[0].scrollTop;
+        let websiteHeight = document.querySelectorAll('.container')[0].scrollHeight - window.innerHeight;
+        let perc = scrollTop/websiteHeight * 100;
+        document.querySelectorAll('.sidebar__fluid')[0].style.height = `${perc}%`;
+        document.querySelectorAll('.sidebar__fluid')[1].style.height = `${0.85*perc}%`;
+        document.querySelectorAll('.sidebar__fluid')[2].style.height = `${0.6*perc}%`;
+        document.querySelectorAll('.sidebar__fluid')[3].style.height = `${0.35*perc}%`;
         this.anchors.forEach((item,index) => {
             if(this.anchors[index+1]){
                 if(scrollTop >= item.y && scrollTop < this.anchors[index+1].y){
-                    item.item.style.textDecoration = 'line-through';
                     this.toggleState(item, true)
                 } else {
-                    item.item.style.textDecoration = 'none';
                     this.toggleState(item, false)
                 }
             } else {
                 if(scrollTop >= item.y){
-                    item.item.style.textDecoration = 'line-through';
                     this.toggleState(item, true)
                 } else {
-                    item.item.style.textDecoration = 'none';
                     this.toggleState(item, false)
                 }
             }
@@ -80,6 +82,9 @@ export class Sidebar {
                         height: '100%'
                     },duration);
                 });
+                $(item.item).animate({
+                    borderColor: 'rgba(255,255,255,1)'
+                },duration);
             }
             item.state = true;
             break;
@@ -90,9 +95,12 @@ export class Sidebar {
                     width: '0%'
                 },duration,() => {
                     $(item.inpoint).animate({
-                        height: '50%'
+                        height: '20%'
                     },duration);
                 });
+                $(item.item).animate({
+                    borderColor: 'rgba(255,255,255,0)'
+                },duration);
             }
             item.state = false;
             break;
