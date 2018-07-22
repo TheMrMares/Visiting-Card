@@ -1,8 +1,7 @@
 export class Sidebar {
     constructor(){
         this.anchors = [];
-        this.list = document.querySelectorAll('.sidebar__list')[0];
-        this.pointer = document.querySelectorAll('.sidebar__pointer')[0];
+        this.container = document.querySelectorAll('.sidebar__container')[0];
 
         let myAnchors = document.querySelectorAll('.anchor');
         let body = document.querySelector('body');
@@ -12,15 +11,22 @@ export class Sidebar {
             let rect = item.getBoundingClientRect();
             let title = item.getAttribute('sb-title');
 
+            let newCupholder = document.createElement('div');
+            newCupholder.classList.add('sidebar__cupholder');
+            this.container.appendChild(newCupholder);
+
             let newItem = document.createElement('div');
             newItem.classList.add('sidebar__item');
             newItem.innerText = title;
-            this.list.appendChild(newItem);
+            newCupholder.appendChild(newItem);
 
             let newPoint = document.createElement('div');
             newPoint.classList.add('sidebar__point');
-            newPoint.innerText = title;
-            this.pointer.appendChild(newPoint);
+            newCupholder.appendChild(newPoint);
+
+            let newInPoint = document.createElement('div');
+            newInPoint.classList.add('sidebar__inpoint');
+            newPoint.appendChild(newInPoint);
 
             this.anchors.push({
                 obj: item,
@@ -30,20 +36,66 @@ export class Sidebar {
                 x: rect.left,
                 title: title,
                 item: newItem,
-                point: newPoint
+                inpoint: newInPoint,
+                state: false
             });
         });
+        this.inMove();
 
     }
     inMove() {
         let scrollTop = document.querySelectorAll('.container')[0].scrollTop;
         this.anchors.forEach((item,index) => {
-            console.log(scrollTop);
-            if(scrollTop >= item.y && scrollTop < item.y + item.h){
-                item.item.style.textDecoration = 'line-through';
+            if(this.anchors[index+1]){
+                if(scrollTop >= item.y && scrollTop < this.anchors[index+1].y){
+                    item.item.style.textDecoration = 'line-through';
+                    this.toggleState(item, true)
+                } else {
+                    item.item.style.textDecoration = 'none';
+                    this.toggleState(item, false)
+                }
             } else {
-                item.item.style.textDecoration = 'none';
+                if(scrollTop >= item.y){
+                    item.item.style.textDecoration = 'line-through';
+                    this.toggleState(item, true)
+                } else {
+                    item.item.style.textDecoration = 'none';
+                    this.toggleState(item, false)
+                }
             }
         });
+    }
+    toggleState(item, state){
+
+        let duration = 150;
+    
+        switch(state){
+            case true:
+            //activate
+            if(item.state == false){
+                $(item.inpoint).animate({
+                    width: '100%'
+                },duration,() => {
+                    $(item.inpoint).animate({
+                        height: '100%'
+                    },duration);
+                });
+            }
+            item.state = true;
+            break;
+            case false:
+            //deactive
+            if(item.state == true){
+                $(item.inpoint).animate({
+                    width: '0%'
+                },duration,() => {
+                    $(item.inpoint).animate({
+                        height: '50%'
+                    },duration);
+                });
+            }
+            item.state = false;
+            break;
+        }
     }
 }

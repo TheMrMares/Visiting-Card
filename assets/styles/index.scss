@@ -9,7 +9,8 @@ html, body {
     font-family: 'Oswald', sans-serif;
     width: 100%;
 	height: 100%;
-	overflow-y: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .container{
 	width: 100%;
@@ -18,10 +19,11 @@ html, body {
     padding-right: 17px;
     box-sizing: content-box;
     right: 0;
+    * {
+        box-sizing: border-box;
+    }
 }
-* {
-    box-sizing: border-box;
-}
+
 img {
     position: relative;
     max-width: 100%;
@@ -35,10 +37,24 @@ img {
 .intile {
     @extend %vertical-center;
 }
-
+//parallax
+.parallax {
+    min-height: 500px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+}
+.parallax:nth-of-type(1) {
+    background-image: url("./../images/0003.jpg");
+}
+.parallax:nth-of-type(2) {
+    background-image: url("./../images/0013.jpg");
+}
 //proper tiles
 .intro {
-    background: rgba(0,0,0,0);
+    background: $dark;
 }
 .about {
     background: $smoothdark;
@@ -51,23 +67,23 @@ img {
     z-index: -1;
     position: fixed;
     width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     video {
         width: 100%;
-        height: 100%;
-        filter: brightness(75%) contrast(130%) saturate(170%);
+    }
+    #blurvid {
+        filter: blur(10px);
     }
 }
 //sidebar
 .sidebar {
     position: fixed;
-    float: right;
-    right: 0;
+    right: 30px;
     top: 0;
     height: 100vh;
-    width: 15%;
-    border: 1px solid red;
+    width: 20%;
 }
 .sidebar__wrapper {
     height: 100%;
@@ -79,24 +95,37 @@ img {
     position: absolute;
     top: 50%;
     right: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.3em;
     width: 100%;
+    white-space: nowrap;
 }
-.sidebar__list, .sidebar__pointer {
-    float: left;
-    height: 100%;
-}
-.sidebar__list {
-    width: 65%;
+.sidebar__cupholder {
+    display: grid;
+    margin: 10px 0px;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 100%;
 }
 .sidebar__item {
-    float: left;
-    width: 100%;
-    text-align: center;
+    text-align: right;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: 1;
+    grid-row-end:1;
+    transition: 0.25s ease;
+    padding: 0px 10px;
 }
 .sidebar__point {
-    float: left;
-    width: 100%;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: 2;
+    grid-row-end:1;
 }
-.sidebar__pointer {
-    width: 35%;
+.sidebar__inpoint {
+    height: 50%;
+    width: 0%;
+    background: $fair;
+    display: block;
+    float: right;
 }
