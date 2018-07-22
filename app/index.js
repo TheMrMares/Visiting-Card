@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Event
     document.addEventListener('mousemove', (event) => {
         cv.refreshMouse(event);
+        cv.addFade();
     });
     document.addEventListener('click',() => {
         cv.addRipple();

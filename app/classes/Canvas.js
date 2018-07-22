@@ -14,6 +14,7 @@ export class Canvas {
         this.mx = 0;
         this.my = 0;
         this.ripples = [];
+        this.fades = [];
         this.tiles = [];
         for(let i = 0; i < this.rows;i++){
             for(let k = 0; k < this.columns;k++){
@@ -28,34 +29,34 @@ export class Canvas {
         this.mx = event.clientX;
         this.my = event.clientY;
     }
+    addFade(){
+        this.fades.push({
+            x: this.mx,
+            y: this.my,
+            opacity: 1.00
+        });
+    }
     addRipple(){
         this.ripples.push({
             x: this.mx,
             y: this.my,
             distance: 160,
             width: 70,
-            opacity: 1.000,
+            opacity: 1.00,
             v: 30,
             vmod: 1.00
         });
     }
     loop(){
-        console.log(this.ripples.length);
         this.drawground.fillStyle = 'rgba(2,2,2,1)';
         this.drawground.fillRect(0,0,this.w,this.h);
 
         this.tiles.forEach((item,index) => {
-            this.drawground.fillStyle = 'rgba(0,0,0,1)';
-            this.drawground.shadowColor = '#d6281b';
-            this.drawground.shadowBlur = 0;
-            item.draw();
+            item.drawNormal();
         });
         this.tiles.forEach((item,index) => {
             if((this.mx >= item.x1 && this.mx <= item.x2) && (this.my >= item.y1 && this.my <= item.y2)){
-                this.drawground.fillStyle = '#d6281b';
-                this.drawground.shadowColor = '#d6281b';
-                this.drawground.shadowBlur = 30;
-                item.draw();
+                item.drawGlow(1,30);
             }
         });
         this.ripples.forEach((item, index) => {
@@ -75,12 +76,21 @@ export class Canvas {
                 let ydis = Math.abs(ry - item.cy);
                 let rdis =  Math.sqrt(xdis*xdis + ydis*ydis);
                 if(rdis < rdistance && rdis > rdistance - rwidth){
-                    this.drawground.fillStyle = `#d6281b`;
-                    this.drawground.shadowColor = `#d6281b`;
-                    this.drawground.shadowBlur = 20;
-                    this.drawground.globalAlpha = ropacity;
-                    item.draw();
-                    this.drawground.globalAlpha = 1;
+                    item.drawGlow(ropacity,20);
+                }
+            });
+        });
+        this.fades.forEach((item, index) => {
+            item.opacity = (item.opacity-0.04).toFixed(2);
+            if(item.opacity <= 0){
+                this.fades.splice(this.fades.indexOf(item),1);
+            }
+            let fx = item.x;
+            let fy = item.y;
+            let fopacity = item.opacity;
+            this.tiles.forEach((item, index) => {
+                if((fx >= item.x1 && fx <= item.x2) && (fy >= item.y1 && fy <= item.y2)){
+                    item.drawGlow(fopacity,0)
                 }
             });
         });

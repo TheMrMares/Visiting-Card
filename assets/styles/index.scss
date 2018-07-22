@@ -69,7 +69,6 @@ img {
     top: 0;
     left: 0;
     z-index: -5;
-    border: 1px solid red;
 }
 //video bckg
 .vdbckg {
@@ -191,6 +190,7 @@ img {
     border-bottom: 3px solid rgba(0,0,0,0);
     position: relative;
     &:hover{
+        color: $dark;
         &::before{
             width: 100%;
             animation: 0.25s ease sweep;
@@ -203,7 +203,7 @@ img {
         right: 0;
         width: 0%;
         height: 100%;
-        background: $special;
+        background: $fair;
         z-index: -1;
     }
 }

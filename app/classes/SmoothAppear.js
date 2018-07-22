@@ -11,7 +11,6 @@ export class SmoothAppear {
         this.borderStart = borderStart;
         this.borderEnd = borderEnd;
         this.delay = delay;
-        console.log(this.elem);
     }
     check(){
         let duration = 300;
@@ -33,6 +32,5 @@ export class SmoothAppear {
                 item.visible = false;
             }
         });
-        //console.log(this.elem);
     }
 }
