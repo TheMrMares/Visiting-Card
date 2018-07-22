@@ -6,6 +6,7 @@ import 'videos/gm.mp4';
 import {Sidebar} from './classes/Sidebar';
 import {Loader} from './classes/Loader';
 import {SmoothAppear} from './classes/SmoothAppear';
+import {Canvas} from './classes/Canvas';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -15,9 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     ld.hide(()=> {
         sp.check();
     });
+    let cv = new Canvas(document.querySelectorAll('.canvas')[0], 1000/60, 50, 50);
     
 
     //Event
+    document.addEventListener('mousemove', (event) => {
+        cv.refreshMouse(event);
+    });
+    document.addEventListener('click',() => {
+        cv.addRipple();
+    });
     document.querySelectorAll('.container')[0].addEventListener('scroll', ()=> {
         sb.inMove();
         sp.check();
