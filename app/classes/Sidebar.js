@@ -51,6 +51,7 @@ export class Sidebar {
         document.querySelectorAll('.sidebar__fluid')[1].style.height = `${0.85*perc}%`;
         document.querySelectorAll('.sidebar__fluid')[2].style.height = `${0.6*perc}%`;
         document.querySelectorAll('.sidebar__fluid')[3].style.height = `${0.35*perc}%`;
+
         this.anchors.forEach((item,index) => {
             if(this.anchors[index+1]){
                 if(scrollTop >= item.y && scrollTop < this.anchors[index+1].y){
