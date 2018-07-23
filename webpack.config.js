@@ -29,10 +29,13 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
         new webpack.DefinePlugin({
             IS_DEV: IS_DEV
         }),
-
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'index.ejs'),
             title: appHtmlTitle

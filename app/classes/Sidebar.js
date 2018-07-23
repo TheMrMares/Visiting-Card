@@ -1,3 +1,6 @@
+import 'jquery';
+import 'jquery-ui';
+
 export class Sidebar {
     constructor(){
         this.anchors = [];

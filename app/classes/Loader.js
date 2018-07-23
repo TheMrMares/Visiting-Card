@@ -1,3 +1,5 @@
+import anime from 'animejs'
+
 export class Loader {
     constructor(duration){
         this.duration = duration;

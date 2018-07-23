@@ -1,3 +1,6 @@
+import 'jquery';
+import 'jquery-ui';
+
 export class SmoothAppear {
     constructor(context, delay, borderStart, borderEnd){
         this.context = context;
