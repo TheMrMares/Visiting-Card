@@ -1,6 +1,6 @@
 // Load application styles
 import 'styles/index.scss';
-import 'videos/gm.mp4';
+import 'sounds/hiphop1.mp3';
 
 // Your app
 import {Sidebar} from './classes/Sidebar';
@@ -10,6 +10,8 @@ import {Canvas} from './classes/Canvas';
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    let abckg = document.querySelectorAll('.audioBackground')[0];
+    abckg.volume = 0.15;
     let sb = new Sidebar();
     let ld = new Loader(500);
     let sp = new SmoothAppear(document.querySelectorAll('.container')[0], 0, 50,50);

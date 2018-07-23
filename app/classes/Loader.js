@@ -35,14 +35,11 @@ export class Loader {
             top: '-100%',
             duration: 1000,
             easing: [.91,-0.54,.29,1.56],
-            offset: 4*duration
+            offset: 4*duration,
+            complete: () => {
+                this.loader.style.display = 'none';
+                callback();
+            }
         });
-
-        /*$(this.loader).delay(this.duration).animate({
-            top: '-100%'
-        },duration, () => {
-            this.loader.style.display = 'none';
-            callback();
-        });*/
     }
 }
