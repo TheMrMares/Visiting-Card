@@ -63,13 +63,13 @@ export class Sidebar {
 
         this.anchors.forEach((item,index) => {
             if(this.anchors[index+1]){
-                if(scrollTop >= item.y && scrollTop < this.anchors[index+1].y){
+                if(scrollTop + window.innerHeight/2 >= item.y && scrollTop + window.innerHeight/2 < this.anchors[index+1].y){
                     this.toggleState(item, true)
                 } else {
                     this.toggleState(item, false)
                 }
             } else {
-                if(scrollTop >= item.y){
+                if(scrollTop + window.innerHeight/2 >= item.y){
                     this.toggleState(item, true)
                 } else {
                     this.toggleState(item, false)

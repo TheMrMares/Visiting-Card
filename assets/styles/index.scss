@@ -51,12 +51,17 @@ img {
 }
 
 //overall
-.crimetext {
+.crimetext, .crimetext--red {
     font-size: 1.3em;
-    background: $fair;
     color: $dark;
     padding: 0px 5px;
     margin-right: 2px;
+}
+.crimetext {
+    background: $fair;
+}
+.crimetext--red {
+    background: $special;
 }
 .tile {
     width: 100vw;
@@ -74,12 +79,24 @@ img {
     border-left: 1px solid $fair;
     position: relative;
     padding: 10px 20px 30px 20px;
-    .school__date {
+    .school__aside {
         position: absolute;
         top: 0;
         right: 100%;
+        width: 100%;
+        height: 100%;
         white-space: nowrap;
-        margin-right: 20px;
+        text-align: right;
+        overflow: hidden;
+    }
+    .school__date {
+        margin: 0px 20px 15px 0px;
+        opacity: 0;
+    }
+    .school__image {
+        margin: 0px 20px 0px 0px;
+        border: 5px solid $fair;
+        max-width: 30%;
     }
     .school__dot {
         z-index: 500;
@@ -89,7 +106,6 @@ img {
         top: -20px;
         left: -10px;
         border-radius: 100%;
-        background: $dark;
         border: 2px solid $fair;
         &:hover {
             background: $fair;
@@ -119,6 +135,13 @@ img {
     position: relative;
     padding: 10px 20px 30px 20px;
     border-top: 1px solid $fair;
+    .cert__score {
+        padding: 10px;
+        z-index: 500;
+        position: absolute;
+        top: 0;
+        color: $special;
+    }
     .cert__dot {
         z-index: 500;
         position: absolute;
@@ -137,6 +160,9 @@ img {
 .cert--left {
     border-left: 1px solid $fair;
     text-align: left;
+    .cert__score {
+        right: 100%;
+    }
     .cert__dot {
         left: -10px;
     }
@@ -144,6 +170,9 @@ img {
 .cert--right {
     text-align: right;
     border-right: 1px solid $fair;
+    .cert__score {
+        left: 100%;
+    }
     .cert__dot {
         right: -10px;
     }

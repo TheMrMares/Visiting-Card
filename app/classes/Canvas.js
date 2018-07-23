@@ -13,9 +13,11 @@ export class Canvas {
         this.th = canvas.height/rows;
         this.mx = 0;
         this.my = 0;
+
         this.ripples = [];
         this.fades = [];
         this.tiles = [];
+       
         for(let i = 0; i < this.rows;i++){
             for(let k = 0; k < this.columns;k++){
                 this.tiles.push(new Tile(this.drawground, k*this.tw, i*this.th, this.tw,this.th));
@@ -49,23 +51,41 @@ export class Canvas {
         });
     }
     loop(){
-        this.drawground.fillStyle = 'rgba(2,2,2,1)';
+        //draw background
+        this.drawground.fillStyle = '#000000';
         this.drawground.fillRect(0,0,this.w,this.h);
-
+        //draw tiles
         this.tiles.forEach((item,index) => {
             item.draw('#000000', null, 1, 0);
         });
-        
+        //draw mouse grid tiles
         this.tiles.forEach((item,index) => {
             if((this.mx >= item.x1 && this.mx <= item.x2) || (this.my >= item.y1 && this.my <= item.y2)){
                 item.draw('#010101', null, 1, 0);
             }
         });
+        //draw crooss lines
+        for(let i = 0; i< this.rows;i++){
+            if(i % 1 == 0){
+                this.drawground.fillStyle = 'rgba(2,2,2,1)';
+                this.drawground.fillRect(0,0+i*this.th,this.w,1);
+                this.drawground.fillRect(0,0+i*this.th+this.th-1,this.w,1);
+            }
+        }
+        for(let i = 0; i< this.columns;i++){
+            if(i % 1 == 0){
+                this.drawground.fillStyle = 'rgba(2,2,2,1)';
+                this.drawground.fillRect(0+i*this.tw,0,1,this.h);
+                this.drawground.fillRect(0+i*this.tw+this.tw-1,0,1,this.h);
+            }
+        }
+        //draw mouse tile
         this.tiles.forEach((item,index) => {
             if((this.mx >= item.x1 && this.mx <= item.x2) && (this.my >= item.y1 && this.my <= item.y2)){
                 item.draw('#d6281b', '#d6281b', 1, 30);
             }
         });
+        //draw ripples
         this.ripples.forEach((item, index) => {
             item.distance += (item.v*item.vmod);
             item.vmod = (item.vmod-0.02).toFixed(2);
@@ -95,6 +115,7 @@ export class Canvas {
                 }
             });
         });
+        //fades aftermouse..
         this.fades.forEach((item, index) => {
             item.opacity = (item.opacity-0.04).toFixed(2);
             if(item.opacity <= 0){
