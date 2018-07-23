@@ -2,7 +2,16 @@ export class SmoothAppear {
     constructor(context, delay, borderStart, borderEnd){
         this.context = context;
         this.elem = [];
-        context.querySelectorAll('p').forEach((item, index) => {
+        let allElem = [
+            ...context.querySelectorAll('p'),
+            ...context.querySelectorAll('h1'),
+            ...context.querySelectorAll('h2'),
+            ...context.querySelectorAll('h3'),
+            ...context.querySelectorAll('h4'),
+            ...context.querySelectorAll('h5'),
+            ...context.querySelectorAll('h6')
+        ];
+        allElem.forEach((item, index) => {
             this.elem.push({
                 obj: item,
                 visible: false

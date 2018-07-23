@@ -11,7 +11,7 @@ import {Canvas} from './classes/Canvas';
 document.addEventListener('DOMContentLoaded', () => {
 
     let sb = new Sidebar();
-    let ld = new Loader(1000);
+    let ld = new Loader(500);
     let sp = new SmoothAppear(document.querySelectorAll('.container')[0], 0, 50,50);
     ld.hide(()=> {
         sp.check();

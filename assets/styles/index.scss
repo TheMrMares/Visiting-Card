@@ -13,7 +13,6 @@ html, body {
     overflow-x: hidden;
 }
 body {
-    //background: url('./../images/widebckg.png');
     background-position-x: 0%;
 }
 .container{
@@ -28,6 +27,20 @@ body {
     }
     p {
         opacity: 0;
+        //text-transform: uppercase;
+        letter-spacing: 2px;
+        .bigLetter {
+            font-size: 1.3em;
+            background: $fair;
+            color: $dark;
+            padding: 0px 5px;
+            margin-right: 2px;
+        }
+    }
+    h1, h2, h3, h4, h5, h6 {
+        opacity: 0;
+        text-transform: uppercase;
+        letter-spacing: 4px;
     }
 }
 button {
@@ -114,6 +127,7 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom: 5px solid $smoothdark;
+    
 }
 .loader__wrapper {
     position: relative;
@@ -123,6 +137,19 @@ img {
 .loader__holder {
     @extend %vertical-center;
     z-index: 120000;
+}
+.loader__spin {
+    width: 5vw;
+    height: 5vw;
+    margin-top: -1000px;
+    border: 5px solid $fair;
+}
+.loader__greetings {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: 30px;
+    text-align: center;
+    opacity: 0;
 }
 //sidebar
 .sidebar {
