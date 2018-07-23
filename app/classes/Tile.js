@@ -23,6 +23,15 @@ export class Tile {
         ]);
         return rt;
     }
+    drawSmooth(){
+        let rt = [];
+        rt.push([
+            this.drawground.fillStyle = '#010101',
+            this.drawground.shadowBlur = 0,
+            this.drawground.fillRect(this.x1+1, this.y1+1, this.w-2, this.h-2)
+        ]);
+        return rt;
+    }
     drawGlow(opacity, blur){
         let rt = [];
         rt.push([

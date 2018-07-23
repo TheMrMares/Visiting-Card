@@ -54,6 +54,12 @@ export class Canvas {
         this.tiles.forEach((item,index) => {
             item.drawNormal();
         });
+        
+        this.tiles.forEach((item,index) => {
+            if((this.mx >= item.x1 && this.mx <= item.x2) || (this.my >= item.y1 && this.my <= item.y2)){
+                item.drawSmooth();
+            }
+        });
         this.tiles.forEach((item,index) => {
             if((this.mx >= item.x1 && this.mx <= item.x2) && (this.my >= item.y1 && this.my <= item.y2)){
                 item.drawGlow(1,30);

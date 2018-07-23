@@ -1,5 +1,6 @@
-import 'jquery';
+//import 'jquery';
 import 'jquery-ui';
+import anime from 'animejs'
 
 export class Sidebar {
     constructor(){
@@ -91,9 +92,11 @@ export class Sidebar {
                         height: '100%'
                     },duration);
                 });
-                $(item.item).animate({
+                anime({
+                    targets: item.item,
+                    offset: 0,
                     borderColor: 'rgba(255,255,255,1)'
-                },duration);
+                });
             }
             item.state = true;
             break;
@@ -107,9 +110,11 @@ export class Sidebar {
                         height: '20%'
                     },duration);
                 });
-                $(item.item).animate({
+                anime({
+                    targets: item.item,
+                    offset: 0,
                     borderColor: 'rgba(255,255,255,0)'
-                },duration);
+                });
             }
             item.state = false;
             break;
