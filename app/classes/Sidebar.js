@@ -39,6 +39,11 @@ export class Sidebar {
                 inpoint: newInPoint,
                 state: false
             });
+            newItem.addEventListener('click',() => {
+                $('.container').animate({
+                    scrollTop: rect.top
+                },500);
+            });
         });
         this.inMove();
 
