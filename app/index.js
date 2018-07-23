@@ -38,9 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.addEventListener('click',() => {
         cv.addRipple(0,70);
-        let xd = document.querySelector('#ed');
-        let rect = xd.getBoundingClientRect();
-        console.log(`JS ${xd.offsetTop}`);
     });
     document.querySelectorAll('.container')[0].addEventListener('scroll', ()=> {
         sb.inMove();

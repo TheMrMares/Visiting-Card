@@ -29,7 +29,7 @@ export class SmoothAppear {
         let duration = 300;
         this.elem.forEach((item, index) => {
             let rect = item.obj.getBoundingClientRect();
-            if(rect.top >= 0 + this.borderStart && rect.top + item.obj.offsetHeight <= window.innerHeight - this.borderEnd){
+            if(rect.top >= 0 + this.borderStart && rect.bottom <= window.innerHeight - this.borderEnd){
                 if(item.visible == false){
                     $(item.obj).delay(this.delay).animate({
                         opacity: 1

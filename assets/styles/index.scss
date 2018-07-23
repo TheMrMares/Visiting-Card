@@ -27,7 +27,6 @@ body {
     }
     p,h1,h2,h3,h4,h5,h6,article {
         opacity: 0.1;
-        transform: translateY(50);
     }
     p {
         margin: 8px 0px;
@@ -60,27 +59,25 @@ img {
     margin-right: 2px;
 }
 .tile {
-    border: 1px solid red;
     width: 100vw;
     min-height: 100vh;
-    float: left;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .intile {
-    @extend %vertical-center;
     width: 40%;
 }
 .school {
     margin-top: 18px;
     border-left: 1px solid $fair;
     position: relative;
-    float: left;
     padding: 10px 20px 30px 20px;
     .school__date {
         position: absolute;
         top: 0;
         right: 100%;
-        border: red;
         white-space: nowrap;
         margin-right: 20px;
     }
@@ -120,7 +117,6 @@ img {
 }
 .cert {
     position: relative;
-    float: left;
     padding: 10px 20px 30px 20px;
     border-top: 1px solid $fair;
     .cert__dot {
@@ -179,6 +175,8 @@ img {
     position: fixed;
     z-index: -3;
     $line-width: 3px;
+    top: 0;
+    left: 0;
     background-image:
         repeating-linear-gradient(
           transparent 0,
