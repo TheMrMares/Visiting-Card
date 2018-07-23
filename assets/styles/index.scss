@@ -25,20 +25,15 @@ body {
     * {
         box-sizing: border-box;
     }
+    p,h1,h2,h3,h4,h5,h6,article {
+        opacity: 0.1;
+        transform: translateY(50);
+    }
     p {
         margin: 8px 0px;
-        opacity: 0;
         letter-spacing: 2px;
-        .crimetext {
-            font-size: 1.3em;
-            background: $fair;
-            color: $dark;
-            padding: 0px 5px;
-            margin-right: 2px;
-        }
     }
     h1, h2, h3, h4, h5, h6 {
-        opacity: 0;
         text-transform: uppercase;
         letter-spacing: 4px;
     }
@@ -57,26 +52,118 @@ img {
 }
 
 //overall
+.crimetext {
+    font-size: 1.3em;
+    background: $fair;
+    color: $dark;
+    padding: 0px 5px;
+    margin-right: 2px;
+}
 .tile {
+    border: 1px solid red;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     float: left;
     position: relative;
 }
 .intile {
     @extend %vertical-center;
-    max-width: 40%;
+    width: 40%;
 }
-
-//proper tiles
-.intro {
-    //background: rgba($dark, 0.15);
+.school {
+    margin-top: 18px;
+    border-left: 1px solid $fair;
+    position: relative;
+    float: left;
+    padding: 10px 20px 30px 20px;
+    .school__date {
+        position: absolute;
+        top: 0;
+        right: 100%;
+        border: red;
+        white-space: nowrap;
+        margin-right: 20px;
+    }
+    .school__dot {
+        z-index: 500;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -20px;
+        left: -10px;
+        border-radius: 100%;
+        background: $dark;
+        border: 2px solid $fair;
+        &:hover {
+            background: $fair;
+        }
+    }
+    border-top: 2px dashed rgba(0,0,0,0);
+    border-bottom: 2px dashed rgba(0,0,0,0);
+    border-right: 2px dashed rgba(0,0,0,0);
+    transition: 0.25s ease;
+    &:hover{
+    }
 }
-.about {
-    //background: rgba($smoothdark, 0.15);
+.school--active {
+    background: rgba($fair, 0.01);
+    .school__dot {
+        animation: flash linear 1s infinite;
+        border: 2px solid $special;
+        background: $special;
+        box-shadow: 0px 0px 10px 0px $special;
+        &:hover{
+            box-shadow: 0px 0px 10px 0px $fair;
+            border: 2px solid $fair;
+        }
+    }
 }
-.footer {
-    //background: rgba($dark, 0.15);
+.cert {
+    position: relative;
+    float: left;
+    padding: 10px 20px 30px 20px;
+    border-top: 1px solid $fair;
+    .cert__dot {
+        z-index: 500;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background: $dark;
+        border: 2px solid $fair;
+        top: -10px;
+        &:hover {
+            background: $fair;
+        }
+    }
+    
+}
+.cert--left {
+    border-left: 1px solid $fair;
+    text-align: left;
+    .cert__dot {
+        left: -10px;
+    }
+}
+.cert--right {
+    text-align: right;
+    border-right: 1px solid $fair;
+    .cert__dot {
+        right: -10px;
+    }
+}
+.cert--active {
+    border-top: none;
+    .cert__dot {
+        animation: flash linear 1s infinite;
+        border: 2px solid $special;
+        background: $special;
+        box-shadow: 0px 0px 10px 0px $special;
+        &:hover{
+            box-shadow: 0px 0px 10px 0px $fair;
+            border: 2px solid $fair;
+        }
+    }
 }
 //canvas
 .canvas {
@@ -85,20 +172,23 @@ img {
     left: 0;
     z-index: -5;
 }
-//video bckg
-.vdbckg {
-    z-index: -1;
-    position: fixed;
+//cyber
+.cyber {
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    video {
-        width: 100%;
-    }
-    #blurvid {
-        filter: blur(10px);
-    }
+    position: fixed;
+    z-index: -3;
+    $line-width: 3px;
+    background-image:
+        repeating-linear-gradient(
+          transparent 0,
+          rgba(0,0,0,0.3) $line-width/2,
+          transparent $line-width
+        );
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    opacity: 0.8;
 }
 //parallax
 .parallax {
@@ -230,14 +320,6 @@ img {
         z-index: -1;
     }
 }
-@keyframes sweep {
-    from {
-        width: 0%;
-    }
-    to {
-        width: 100%;
-    }
-}
 .sidebar__point {
     grid-column-start: 2;
     grid-row-start: 1;
@@ -251,4 +333,18 @@ img {
     display: block;
     float: left;
     border-top: 2px solid rgba($fair, 0.08);
+}
+//animations
+@keyframes flash {
+	0% { opacity: 1;  box-shadow: 0px 0px 20px 0px $special;} 
+	50% { opacity: 0.8; box-shadow: 0px 0px 0px 0px $special;} 
+	100% { opacity: 1; box-shadow: 0px 0px 20px 0px $special;}
+}
+@keyframes sweep {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
 }

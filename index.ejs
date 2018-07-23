@@ -6,20 +6,6 @@
     <title>xd - Visiting Card</title>
 </head>
 <body>
-    <!--loader -->
-    <section class="loader">
-        <div class="loader__wrapper">
-            <div class="loader__holder">
-                <div class="loader__spin">
-
-                </div>
-                <h1 class="loader__greetings">Finally</h1>
-            </div>
-            <div class="loader__dot">
-
-            </div>
-        </div>
-    </section>
     <!-- container -->
     <div class="container">
         <!-- content -->
@@ -35,19 +21,60 @@
         <section class="anchor tile about" sb-title="About me">
             <div class="intile">
                 <h2>Who am I?</h2>
-                <p><spin class="crimetext">I am</spin> IT hobbyst, who is mostly interested in front-end web development. I am focused on this one thing as well but I have more hobbies. I love programming, even while It gets my angry, I just love it. Often I have got interesteing ideas and projects which are my challenges. I do not feel fear of new problems. Sometimes I also deal with computers graphic, therefore I have ocassions to make signatures, avatars and other projects.</p>
-                <h1>About me</h1>
+                <p><span class="crimetext">I am</span> IT hobbyst, who is mostly interested in front-end web development. I am focused on this one thing as well but I have more hobbies. I love programming, even while It gets my angry, I just love it. Often I have got interesteing ideas and projects which are my challenges. I do not feel fear of new problems. Sometimes I also deal with computers graphic, therefore I have ocassions to make signatures, avatars and other projects.</p>
+                <h1 id="ab">About me</h1>
             </div>
         </section>
         <section class="anchor tile intro" sb-title="Education">
                 <div class="intile">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, molestias libero impedit dignissimos vel voluptatum suscipit tempora ullam magnam incidunt ducimus eos, qui asperiores? Odit debitis nam quod. Ipsa laboriosam expedita quos in rerum libero maiores itaque repudiandae corrupti illo.</p>
-                    <h1>education</h1>
+                    <article class="school school--active">
+                        <h5 class="school__date">
+                            <span class="crimetext">07/2018 yr. - now	</span>
+                        </h5>
+                        <h2>Warsaw</h2>
+                        <h3>Warsaw School of Computer Science</h3>
+                        <h4>University - Software Engineering</h4>
+                        <div class="school__dot"></div>
+                    </article>
+                    <article class="school">
+                        <h5 class="school__date">
+                            <span class="crimetext">01/2014 yr. - 01/2018 yr.</span>
+                        </h5>
+                        <h2>Wiskitki</h2>
+                        <h3>Maria Skłodowska-Curie Upper Secondary School Complex No. 3 in 							Wiskitki</h3>
+                        <h4>Technical School - Information Technology</h4>
+                        <div class="school__dot"></div>
+                    </article>
+                    <h1 id="ed">Education</h1>
                 </div>
+        </section>
+        <section class="anchor tile intro" sb-title="Certificates">
+            <div class="intile">
+                <article class="cert cert--left cert--active" id="abc">
+                    <h2><span class="crimetext">E.14</span></h2>
+                    <h3>Creating internet applications and databases, and administrating databases.</h3>
+                    <h4>Regional Examination Commission in Warsaw</h4>
+                    <div class="cert__dot cert__dot--active"></div>
+                </article>
+                <article class="cert cert--right">
+                    <h2><span class="crimetext">E.13</span></h2>
+                    <h3>Designing local computer networks and administrating networks.</h3>
+                    <h4>Regional Examination Commission in Warsaw</h4>
+                    <div class="cert__dot cert__dot--active"></div>
+                </article>
+                <article class="cert cert--left">
+                    <h2><span class="crimetext">E.12</span></h2>
+                    <h3>Assembly and operation of personal computers and peripheral devices.</h3>
+                    <h4>Regional Examination Commission in Warsaw</h4>
+                    <div class="cert__dot"></div>
+                </article>
+                <h1 id="xd">Certificates</h1>
+            </div>
         </section>
         <section class="anchor tile footer" sb-title="At the end">
             <div class="intile">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, molestias libero impedit dignissimos vel voluptatum suscipit tempora ullam magnam incidunt ducimus eos, qui asperiores? Odit debitis nam quod. Ipsa laboriosam expedita quos in rerum libero maiores itaque repudiandae corrupti illo.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, molestias libero impedit dignissimos vel voluptatum suscipit tempora ullam magnam incidunt ducimus eos, qui asperiores? Odit debitis nam quod. Ipsa laboriosam expedita quos in rerum libero maiores itaque repudiandae corrupti illo.</p>
+                <h1>At the end</h1>
             </div>
         </section>
         <!-- sidebar -->
@@ -72,10 +99,24 @@
                 </div>
             </div>
         </aside>
-        <!-- canvas -->
-        <canvas class="canvas" width="1920" height="1080">
+        <!--loader -->
+        <section class="loader">
+            <div class="loader__wrapper">
+                <div class="loader__holder">
+                    <div class="loader__spin">
 
-        </canvas>
+                    </div>
+                    <h1 class="loader__greetings">Finally</h1>
+                </div>
+                <div class="loader__dot">
+
+                </div>
+            </div>
+        </section>
+        <!-- canvas -->
+        <canvas class="canvas" width="1920" height="1080"></canvas>
+        <!-- cyber -->
+        <div class="cyber"></div>
         <!-- sound -->
         <audio class="audioBackground" autoplay loop>
             <source src="./assets/sounds/hiphop1.mp3" type="audio/mpeg">

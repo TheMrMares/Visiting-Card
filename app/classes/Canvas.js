@@ -36,15 +36,16 @@ export class Canvas {
             opacity: 1.00
         });
     }
-    addRipple(){
+    addRipple(mode = 0,w = 70){
         this.ripples.push({
             x: this.mx,
             y: this.my,
             distance: 160,
-            width: 70,
+            width: w,
             opacity: 1.00,
             v: 30,
-            vmod: 1.00
+            vmod: 1.00,
+            mode: mode
         });
     }
     loop(){
@@ -52,17 +53,17 @@ export class Canvas {
         this.drawground.fillRect(0,0,this.w,this.h);
 
         this.tiles.forEach((item,index) => {
-            item.drawNormal();
+            item.draw('#000000', null, 1, 0);
         });
         
         this.tiles.forEach((item,index) => {
             if((this.mx >= item.x1 && this.mx <= item.x2) || (this.my >= item.y1 && this.my <= item.y2)){
-                item.drawSmooth();
+                item.draw('#010101', null, 1, 0);
             }
         });
         this.tiles.forEach((item,index) => {
             if((this.mx >= item.x1 && this.mx <= item.x2) && (this.my >= item.y1 && this.my <= item.y2)){
-                item.drawGlow(1,30);
+                item.draw('#d6281b', '#d6281b', 1, 30);
             }
         });
         this.ripples.forEach((item, index) => {
@@ -77,12 +78,20 @@ export class Canvas {
             let rdistance = item.distance;
             let rwidth = item.width;
             let ropacity = item.opacity;
+            let rmode = item.mode;
             this.tiles.forEach((item, index) => {
                 let xdis = Math.abs(rx - item.cx);
                 let ydis = Math.abs(ry - item.cy);
                 let rdis =  Math.sqrt(xdis*xdis + ydis*ydis);
                 if(rdis < rdistance && rdis > rdistance - rwidth){
-                    item.drawGlow(ropacity,20);
+                    switch(rmode){
+                        case 0:
+                            item.draw('#d6281b', '#d6281b', ropacity, 20);
+                        break;
+                        case 1:
+                            item.draw('#010101', null, ropacity, 0);
+                        break;
+                    }
                 }
             });
         });
@@ -96,7 +105,7 @@ export class Canvas {
             let fopacity = item.opacity;
             this.tiles.forEach((item, index) => {
                 if((fx >= item.x1 && fx <= item.x2) && (fy >= item.y1 && fy <= item.y2)){
-                    item.drawGlow(fopacity,0)
+                    item.draw('#d6281b', '#d6281b', fopacity, 0);
                 }
             });
         });

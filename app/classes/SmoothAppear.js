@@ -12,7 +12,8 @@ export class SmoothAppear {
             ...context.querySelectorAll('h3'),
             ...context.querySelectorAll('h4'),
             ...context.querySelectorAll('h5'),
-            ...context.querySelectorAll('h6')
+            ...context.querySelectorAll('h6'),
+            ...context.querySelectorAll('article')
         ];
         allElem.forEach((item, index) => {
             this.elem.push({
@@ -38,7 +39,7 @@ export class SmoothAppear {
             } else {
                 if(item.visible == true){
                     $(item.obj).delay(this.delay).animate({
-                        opacity: 0
+                        opacity: 0.1
                     },duration);
                 }
                 item.visible = false;
