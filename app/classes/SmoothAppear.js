@@ -15,7 +15,8 @@ export class SmoothAppear {
             ...context.querySelectorAll('h5'),
             ...context.querySelectorAll('h6'),
             ...context.querySelectorAll('img'),
-            ...context.querySelectorAll('.group__marker')
+            ...context.querySelectorAll('.group__marker'),
+            ...context.querySelectorAll('a')
         ];
         allElem.forEach((item, index) => {
             this.appearElem.push({

@@ -1,5 +1,4 @@
-import 'jquery';
-import 'jquery-ui';
+import anime from 'animejs';
 
 export class Anchor {
     constructor(obj, w, h, y, x, title, item, inpoint, state){
@@ -16,9 +15,12 @@ export class Anchor {
         this.item.addEventListener('click',this.scrollTo.bind(this));
     }
     scrollTo() {
-        let rect = this.obj.getBoundingClientRect();
-        $('.container').animate({
-            scrollTop: rect.top
-        },500);
+        anime({
+            targets: document.querySelectorAll('.container')[0],
+            scrollTop: this.y,
+            duration: 500,
+            round: 1,
+            easing: 'easeInOutQuart'
+        });
     }
 }

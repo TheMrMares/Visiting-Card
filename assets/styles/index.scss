@@ -27,7 +27,7 @@ body {
     * {
         box-sizing: border-box;
     }
-    p,h1,h2,h3,h4,h5,h6,img, .group__marker {
+    p,h1,h2,h3,h4,h5,h6,img, .group__marker, a {
         opacity: 0.1;
     }
     p {
@@ -275,7 +275,7 @@ img {
     .media__medium {
         margin-top: 30px;
         margin-bottom: 30px;
-        border-top: 2px dashed $special;
+        border-top: 1px solid $fair;
         position: relative;
     }
     .media__dot, .media__dot--left, .media__dot--right {
@@ -284,18 +284,22 @@ img {
         width: 20px;
         height: 20px;
         border-radius: 100%;
-        background: $dark;
-        border: 2px dashed $special;
         top: -10px;
-        &:hover {
+        animation: flash linear 1s infinite;
+        border: 2px solid $special;
+        background: $special;
+        box-shadow: 0px 0px 10px 0px $special;
+        &:hover{
+            box-shadow: 0px 0px 10px 0px $fair;
+            border: 2px solid $fair;
             background: $fair;
         }
     }
     .media__dot--left {
-        left: -10px;
+        left: -20px;
     }
     .media__dot--right {
-        right: -10px;
+        right: -20px;
     }
     .media__medium:nth-of-type(1) {
         margin-left: 0%;
