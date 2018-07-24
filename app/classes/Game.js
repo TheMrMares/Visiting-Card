@@ -1,6 +1,8 @@
 export class Game {
     constructor(drawground,px,py,tw,th,w,h, columns, rows){
         this.drawground = drawground;
+        this.startx = px;
+        this.starty = py;
         this.px = px;
         this.py = py;
         this.tw = tw;
@@ -20,22 +22,30 @@ export class Game {
             //top
             case 38:
             case 87:
-                this.vy = -1; this.vx = 0;
+                if(this.vy != 1){
+                    this.vy = -1; this.vx = 0;
+                }
             break;
             //bottom
             case 40:
             case 83:
-                this.vy = 1; this.vx = 0;
+                if(this.vy != -1){
+                    this.vy = 1; this.vx = 0;
+                }
             break;
             //left
             case 37:
             case 65:
-                this.vy = 0; this.vx = -1;
+                if(this.vx != 1){
+                    this.vy = 0; this.vx = -1;
+                }
             break;
             //right
             case 39:
             case 68:
-                this.vy = 0; this.vx = 1;
+                if(this.vx != -1){
+                    this.vy = 0; this.vx = 1;
+                }
             break;
             default:
             break;
@@ -62,6 +72,15 @@ export class Game {
         if(this.py > this.h){
             this.py = 0;
         }
+        //body collision 
+        this.tail.forEach((item, index) => {
+            if(this.px == item.x && this.py == item.y){
+                this.tail = [];
+                this.maxlen = 5;
+                this.px = this.startx;
+                this.py = this.starty;
+            }
+        });
     }
     loop(){
         this.frame ++;
