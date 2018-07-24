@@ -85,7 +85,8 @@ export class Skills {
     setSkills(){
         this.skillContainers.forEach((item,index)=>{
             item.skills.forEach((item,index)=>{
-                item.marker.style.width = `${item.power/this.pointer*100}%`;
+                //item.marker.style.width = `${item.power/this.pointer*100}%`;
+                item.marker.setAttribute('sb-expand',item.power/this.pointer*100);
             });
         });
     }

@@ -30,6 +30,13 @@ export class SmoothAppear {
                 visible: false
             });
         });
+        this.expandElem = [];
+        document.querySelectorAll('.group__marker').forEach((item, index) => {
+            this.expandElem.push({
+                obj: item,
+                visible: false
+            });
+        });
         console.log(this.growElem);
         this.borderStart = borderStart;
         this.borderEnd = borderEnd;
@@ -63,15 +70,14 @@ export class SmoothAppear {
             }
         });
         this.growElem.forEach((item, index) => {
-            console.log('xd');
             if(this.inViewport(item.obj)){
-                console.log(item.obj);
                 if(item.visible == false){
                     anime({
                         targets: item.obj,
                         textContent: `${item.obj.getAttribute('sb-grow')}%`,
                         round: 1,
-                        easing: 'easeInOutExpo'
+                        duration: 1500,
+                        easing: 'easeInOutQuart'
                     });
                     item.visible = true;
                 }
@@ -81,7 +87,33 @@ export class SmoothAppear {
                         targets: item.obj,
                         textContent: `${0}%`,
                         round: 1,
-                        easing: 'easeInOutExpo'
+                        duration: 1500,
+                        easing: 'easeInOutQuart'
+                    });
+                    item.visible = false;
+                }
+            }
+        });
+        this.expandElem.forEach((item, index) => {
+            if(this.inViewport(item.obj)){
+                if(item.visible == false){
+                    anime({
+                        targets: item.obj,
+                        width: `${item.obj.getAttribute('sb-expand')}%`,
+                        round: 1,
+                        duration: 800,
+                        easing: 'easeInOutQuart'
+                    });
+                    item.visible = true;
+                }
+            } else {
+                if(item.visible == true){
+                    anime({
+                        targets: item.obj,
+                        width: 0,
+                        round: 1,
+                        duration: 800,
+                        easing: 'easeInOutQuart'
                     });
                     item.visible = false;
                 }
