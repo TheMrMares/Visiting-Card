@@ -1,6 +1,5 @@
 // Load application styles
 import 'styles/index.scss';
-import 'sounds/hiphop1.mp3';
 import 'images/slog1mincom.png';
 import 'images/slog2mincom.png';
 import 'images/favicon1min.png';
@@ -9,17 +8,19 @@ import 'images/favicon1min.png';
 import 'jquery';
 import 'jquery-ui';
 
+import audioURL from 'sounds/hiphop1.mp3';
+let audioState = false;
+
 import {Sidebar} from './classes/Sidebar';
 import {Loader} from './classes/Loader';
 import {SmoothAppear} from './classes/SmoothAppear';
 import {Canvas} from './classes/Canvas';
 import {Skills} from './classes/Skills';
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    let abckg = document.querySelectorAll('.audioBackground')[0];
-    abckg.volume = 0.15;
-    
     let ld = new Loader(0);
     
     let cv = new Canvas(document.querySelectorAll('.canvas')[0], 1000/60, 50, 50);
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (event) => {
         cv.refreshMouse(event);
         cv.addFade();
+        goAudio();
     });
     document.addEventListener('click',() => {
         cv.addRipple(0,70);
@@ -53,3 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 });
+
+//Audio avoid browser block
+function goAudio() {
+    if(audioState == false){
+        let audio = new Audio(audioURL);
+        audio.volume = 0.15;
+        audio.loop = true;
+        audio.play();
+        audioState = true;
+    }
+}
