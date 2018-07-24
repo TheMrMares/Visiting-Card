@@ -7,6 +7,7 @@ html, body {
     padding: 0;
     color: $fair;
     font-family: 'Oswald', sans-serif;
+    min-width: 1600px;
     width: 100%;
 	height: 100%;
     overflow-y: hidden;
@@ -16,6 +17,7 @@ body {
     background: none;
 }
 .container{
+    min-width: 1600px;
 	width: 100%;
     height: 100%;
     overflow-y: scroll;
@@ -25,7 +27,7 @@ body {
     * {
         box-sizing: border-box;
     }
-    p,h1,h2,h3,h4,h5,h6,article {
+    p,h1,h2,h3,h4,h5,h6,img {
         opacity: 0.1;
     }
     p {
@@ -37,7 +39,8 @@ body {
         letter-spacing: 4px;
     }
     h1 {font-size: 4em; margin:15px 0px;}
-    h2 {font-size: 1.2em};
+    h2 {font-size: 1.2em;}
+    h3 {font-size: 1.1em;}
 }
 button {
     background: none;
@@ -71,9 +74,14 @@ img {
     justify-content: center;
     align-items: center;
 }
+.tile__title {
+    color: $special;
+    text-shadow: 0px 0px 3px $special;
+}
 .intile {
     width: 40%;
 }
+
 .school {
     margin-top: 18px;
     border-left: 1px solid $fair;
@@ -99,6 +107,7 @@ img {
         max-width: 30%;
     }
     .school__dot {
+        background: $dark;
         z-index: 500;
         position: absolute;
         width: 20px;
@@ -180,6 +189,68 @@ img {
 .cert--active {
     border-top: none;
     .cert__dot {
+        animation: flash linear 1s infinite;
+        border: 2px solid $special;
+        background: $special;
+        box-shadow: 0px 0px 10px 0px $special;
+        &:hover{
+            box-shadow: 0px 0px 10px 0px $fair;
+            border: 2px solid $fair;
+        }
+    }
+}
+.group {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+    .group__header {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+    }
+    .group__title {
+        margin: 0;
+        transform: rotate(-90deg);
+        white-space: nowrap;
+    }
+    .group__skills {
+        width: 90%;
+        padding-left: 30px;
+        .group__ability:last-of-type {
+            margin-bottom: 30px;
+        }
+    }
+    .group__ability {
+        width: 100%;
+    }
+    .group__marker {
+        width: 70%;
+        height: 2px;
+        border-top: 1px solid $fair;
+        position: relative;
+    }
+    .group__dot, .group__dot--left, .group__dot--right, {
+        z-index: 500;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background: $dark;
+        border: 2px solid $fair;
+        top: -10px;
+        &:hover {
+            background: $fair;
+        }
+    }
+    .group__dot--left {
+        left: -20px;
+    }
+    .group__dot--right {
+        right: -20px;
+    }
+    .group__dot--active {
         animation: flash linear 1s infinite;
         border: 2px solid $special;
         background: $special;

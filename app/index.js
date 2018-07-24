@@ -1,6 +1,8 @@
 // Load application styles
 import 'styles/index.scss';
 import 'sounds/hiphop1.mp3';
+import 'images/slog1.png';
+import 'images/slog2.png';
 
 // Your app
 import 'jquery';
@@ -10,6 +12,7 @@ import {Sidebar} from './classes/Sidebar';
 import {Loader} from './classes/Loader';
 import {SmoothAppear} from './classes/SmoothAppear';
 import {Canvas} from './classes/Canvas';
+import {Skills} from './classes/Skills';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -22,9 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         sp.check();
     });
     let cv = new Canvas(document.querySelectorAll('.canvas')[0], 1000/60, 50, 50);
+    let sk = new Skills();
 
     //Event
-    document.querySelectorAll('.school__dot, .cert__dot').forEach((item, index) => {
+    document.querySelectorAll('.school__dot, .cert__dot, .group__dot, .group__dot--left, .group__dot--right').forEach((item, index) => {
         item.addEventListener('mouseenter', ()=>{
             cv.addRipple(1,50);
         });

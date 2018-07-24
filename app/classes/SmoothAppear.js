@@ -13,7 +13,7 @@ export class SmoothAppear {
             ...context.querySelectorAll('h4'),
             ...context.querySelectorAll('h5'),
             ...context.querySelectorAll('h6'),
-            ...context.querySelectorAll('article')
+            ...context.querySelectorAll('img')
         ];
         allElem.forEach((item, index) => {
             this.elem.push({
