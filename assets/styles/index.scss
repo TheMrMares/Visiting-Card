@@ -52,7 +52,6 @@ img {
     position: relative;
     max-width: 100%;
 }
-
 //overall
 .crimetext, .crimetext--red {
     font-size: 1.3em;
@@ -130,7 +129,7 @@ img {
 .school--active {
     background: rgba($fair, 0.01);
     .school__dot {
-        animation: flash linear 1s infinite;
+        animation: flashspecial linear 1s infinite;
         border: 2px solid $special;
         background: $special;
         box-shadow: 0px 0px 10px 0px $special;
@@ -189,7 +188,7 @@ img {
 .cert--active {
     border-top: none;
     .cert__dot {
-        animation: flash linear 1s infinite;
+        animation: flashspecial linear 1s infinite;
         border: 2px solid $special;
         background: $special;
         box-shadow: 0px 0px 10px 0px $special;
@@ -261,7 +260,7 @@ img {
         right: -20px;
     }
     .group__dot--active {
-        animation: flash linear 1s infinite;
+        animation: flashspecial linear 1s infinite;
         border: 2px solid $special;
         background: $special;
         box-shadow: 0px 0px 10px 0px $special;
@@ -285,7 +284,7 @@ img {
         height: 20px;
         border-radius: 100%;
         top: -10px;
-        animation: flash linear 1s infinite;
+        animation: flashspecial linear 1s infinite;
         border: 2px solid $special;
         background: $special;
         box-shadow: 0px 0px 10px 0px $special;
@@ -383,34 +382,31 @@ img {
     left: 0;
     background: $dark;
     z-index: 100000;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     border-bottom: 5px solid $smoothdark;
-    
-}
-.loader__wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .loader__holder {
-    @extend %vertical-center;
-    z-index: 120000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .loader__spin {
     width: 5vw;
     height: 5vw;
-    margin-top: -1000px;
-    border: 5px solid $fair;
+    opacity: 0;
+    box-shadow: 0px 0px 15px 0px $special;
+    background: $special;
 }
 .loader__greetings {
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-top: 30px;
+    margin-top: 50px;
     text-align: center;
     opacity: 0;
+    font-size: 1.5em !important;
 }
 //sidebar
 .sidebar {
@@ -510,10 +506,20 @@ img {
     border-top: 2px solid rgba($fair, 0.08);
 }
 //animations
-@keyframes flash {
+@keyframes flashspecial {
 	0% { opacity: 1;  box-shadow: 0px 0px 20px 0px $special;} 
 	50% { opacity: 0.8; box-shadow: 0px 0px 0px 0px $special;} 
 	100% { opacity: 1; box-shadow: 0px 0px 20px 0px $special;}
+}
+@keyframes flashfair {
+	0% { opacity: 1;  box-shadow: 0px 0px 20px 0px $fair;} 
+	50% { opacity: 0.8; box-shadow: 0px 0px 0px 0px $fair;} 
+	100% { opacity: 1; box-shadow: 0px 0px 20px 0px $fair;}
+}
+@keyframes flashfairtext {
+	0% { opacity: 1;  text-shadow: 0px 0px 10px $fair;} 
+	50% { opacity: 0.8; text-shadow: 0px 0px 0px $fair;} 
+	100% { opacity: 1; text-shadow: 0px 0px 10px $fair;}
 }
 @keyframes sweep {
     from {

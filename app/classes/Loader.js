@@ -4,40 +4,47 @@ export class Loader {
     constructor(duration){
         this.duration = duration;
         this.loader = document.querySelectorAll('.loader')[0];
+        this.holder = document.querySelectorAll('.loader__holder')[0];
         this.spin = document.querySelectorAll('.loader__spin')[0];
         this.greetings = document.querySelectorAll('.loader__greetings')[0];
         this.content = document.querySelectorAll('.container')[0];
     }
-    hide(callback){
+    show(callback){
         let duration = this.duration;
 
         let tl = anime.timeline();
         tl.add({
             targets: this.spin,
-            marginTop: 0,
-            easing: 'easeOutExpo',
-            offset: 0*duration
+            opacity: 1,
+            duration: 600,
+            offset: duration*1,
+            easing: 'easeInOutQuart'
         }).add({
             targets: this.spin,
-            rotate: 225,
-            easing: 'easeOutExpo',
-            offset: 1*duration
-        }).add({
-            targets: this.spin,
-            backgroundColor: '#d6281b',
-            easing: 'easeOutExpo',
-            offset: 2*duration
+            rotate: 405,
+            duration: 600,
+            offset: duration*2,
+            easing: 'easeInOutQuart'
         }).add({
             targets: this.greetings,
             opacity: 1,
-            easing: 'easeOutExpo',
-            offset: 3*duration
-        }).add({
+            duration: 600,
+            offset: duration*3,
+            easing: 'easeInOutQuart',
+            complete: () => {
+                this.greetings.style.animation = 'flashfairtext linear 1s infinite';
+            }
+        });
+    }
+    hide(callback){
+        let duration = this.duration;
+        let tl = anime.timeline();
+        tl.add({
             targets: this.loader,
             top: '-100%',
             duration: 1000,
-            easing: [.91,-0.54,.29,1.56],
-            offset: 4*duration,
+            easing: 'easeInOutQuart',
+            offset: 0,
             complete: () => {
                 this.loader.style.display = 'none';
                 callback();
