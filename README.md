@@ -1,6 +1,7 @@
 # Visiting-Card
 
-## -.-
+## Online CV
+Online, light version of my CV.
 
 ### What is that?
-Just go in and check out who am I and what I do :D
+You will see, just go in and check out who am I and what I do :D

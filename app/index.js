@@ -19,7 +19,7 @@ import {Skills} from './classes/Skills';
 
 document.addEventListener('DOMContentLoaded', () => {
     let audio = document.querySelector('.audioBackground');
-    audio.volume = 0.15;
+    audio.volume = 0.10;
     
     let ld = new Loader(400);
     
@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('mouseleave', ()=>{
             cv.addRipple(1,50);
         });
+    });
+    document.addEventListener('keydown', (evt) => {
+        cv.pushKey(evt);
     });
     document.addEventListener('mousemove', (event) => {
         cv.refreshMouse(event);

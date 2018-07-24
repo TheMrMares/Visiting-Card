@@ -1,4 +1,5 @@
 import {Tile} from './Tile';
+import {Game} from './Game';
 
 export class Canvas {
     constructor(canvas,framerate,rows,columns){
@@ -17,7 +18,12 @@ export class Canvas {
         this.ripples = [];
         this.fades = [];
         this.tiles = [];
-       
+
+        this.solution = 'game';
+        this.secret = '';
+        this.game = null;
+        this.gamestate = false;
+
         for(let i = 0; i < this.rows;i++){
             for(let k = 0; k < this.columns;k++){
                 this.tiles.push(new Tile(this.drawground, k*this.tw, i*this.th, this.tw,this.th));
@@ -49,6 +55,26 @@ export class Canvas {
             vmod: 1.00,
             mode: mode
         });
+    }
+
+    //game fxs
+    pushKey(evt){
+        switch(this.gamestate){
+            case false:
+                this.secret += (String.fromCharCode(evt.keyCode)).toLocaleLowerCase();
+                if(this.secret[this.secret.length-1] != this.solution[this.secret.length-1]){
+                    this.secret = '';
+                }
+                if(this.secret.length == this.solution.length && this.secret == this.solution) {
+                    this.game = new Game(this.drawground, (this.columns/2)*this.tw, (this.rows/2)*this.th, this.tw,this.th,this.w,this.h,this.columns,this.rows);
+                    this.gamestate = true;
+                }
+            break;
+            case true:
+                this.game.pushKey(evt);
+            break;
+        }
+        
     }
     loop(){
         //draw background
@@ -130,5 +156,9 @@ export class Canvas {
                 }
             });
         });
+        //game
+        if(this.gamestate == true){
+            this.game.loop();
+        }
     }
 }
