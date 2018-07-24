@@ -20,12 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     abckg.volume = 0.15;
     let sb = new Sidebar();
     let ld = new Loader(0);
+    let cv = new Canvas(document.querySelectorAll('.canvas')[0], 1000/60, 50, 50);
+    let sk = new Skills();
+
     let sp = new SmoothAppear(document.querySelectorAll('.container')[0], 0, 50,50);
     ld.hide(()=> {
         sp.check();
     });
-    let cv = new Canvas(document.querySelectorAll('.canvas')[0], 1000/60, 50, 50);
-    let sk = new Skills();
 
     //Event
     document.querySelectorAll('.school__dot, .cert__dot, .group__dot, .group__dot--left, .group__dot--right').forEach((item, index) => {
