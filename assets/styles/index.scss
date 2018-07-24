@@ -73,6 +73,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 150px 0px;
 }
 .tile__title {
     color: $special;
@@ -81,7 +82,6 @@ img {
 .intile {
     width: 40%;
 }
-
 .school {
     margin-top: 18px;
     border-left: 1px solid $fair;
@@ -231,6 +231,16 @@ img {
         border-top: 1px solid $fair;
         position: relative;
     }
+    .group__counter {
+        text-align: center;
+        z-index: 500;
+        position: absolute;
+        color: $special;
+        right: -50px;
+        top: -15px;
+        font-size: 1.3em;
+        text-shadow: 0px 0px 5px $special;
+    }
     .group__dot, .group__dot--left, .group__dot--right, {
         z-index: 500;
         position: absolute;
@@ -258,6 +268,69 @@ img {
         &:hover{
             box-shadow: 0px 0px 10px 0px $fair;
             border: 2px solid $fair;
+        }
+    }
+}
+.media {
+    .media__medium {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border-top: 2px dashed $special;
+        position: relative;
+    }
+    .media__dot, .media__dot--left, .media__dot--right {
+        z-index: 500;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background: $dark;
+        border: 2px dashed $special;
+        top: -10px;
+        &:hover {
+            background: $fair;
+        }
+    }
+    .media__dot--left {
+        left: -10px;
+    }
+    .media__dot--right {
+        right: -10px;
+    }
+    .media__medium:nth-of-type(1) {
+        margin-left: 0%;
+    }
+    .media__medium:nth-of-type(2) {
+        margin-left: 30%;
+    }
+    .media__medium:nth-of-type(3) {
+        margin-left: 60%;
+    }
+    .media__link {
+        color: $fair;
+        border: 3px solid $fair;
+        padding: 5px 40px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-decoration: none;
+        position: relative;
+        margin: 0;
+        &:hover{
+            color: $dark;
+            &::before{
+                width: 100%;
+                animation: 0.25s ease sweep;
+            }
+        }
+        &:before{
+            position: absolute;
+            content: "";
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 100%;
+            background: $fair;
+            z-index: -1;
         }
     }
 }

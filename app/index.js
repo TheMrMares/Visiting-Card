@@ -18,11 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let abckg = document.querySelectorAll('.audioBackground')[0];
     abckg.volume = 0.15;
-    let sb = new Sidebar();
+    
     let ld = new Loader(0);
+    
     let cv = new Canvas(document.querySelectorAll('.canvas')[0], 1000/60, 50, 50);
     let sk = new Skills();
-
+    
+    let sb = new Sidebar();
     let sp = new SmoothAppear(document.querySelectorAll('.container')[0], 0, 50,50);
     ld.hide(()=> {
         sp.check();

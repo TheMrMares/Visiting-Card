@@ -34,10 +34,10 @@ export class SmoothAppear {
         document.querySelectorAll('.group__marker').forEach((item, index) => {
             this.expandElem.push({
                 obj: item,
+                counter: item.querySelectorAll('.group__counter')[0],
                 visible: false
             });
         });
-        console.log(this.growElem);
         this.borderStart = borderStart;
         this.borderEnd = borderEnd;
         this.delay = delay;
@@ -97,22 +97,40 @@ export class SmoothAppear {
         this.expandElem.forEach((item, index) => {
             if(this.inViewport(item.obj)){
                 if(item.visible == false){
-                    anime({
+                    let fadeIn = anime.timeline();
+                    fadeIn.add({
                         targets: item.obj,
                         width: `${item.obj.getAttribute('sb-expand')}%`,
                         round: 1,
                         duration: 800,
+                        offset: 0,
+                        easing: 'easeInOutQuart'
+                    }).add({
+                        targets: item.counter,
+                        textContent: `${item.obj.getAttribute('sb-power')}`,
+                        round: 1,
+                        duration: 800,
+                        offset: 0,
                         easing: 'easeInOutQuart'
                     });
                     item.visible = true;
                 }
             } else {
                 if(item.visible == true){
-                    anime({
+                    let fadeOut = anime.timeline();
+                    fadeOut.add({
                         targets: item.obj,
                         width: 0,
                         round: 1,
                         duration: 800,
+                        offset: 0,
+                        easing: 'easeInOutQuart'
+                    }).add({
+                        targets: item.counter,
+                        textContent: `0`,
+                        round: 1,
+                        duration: 800,
+                        offset: 0,
                         easing: 'easeInOutQuart'
                     });
                     item.visible = false;

@@ -79,6 +79,11 @@ export class Skills {
                 let elemDotB = document.createElement('div');
                 elemDotB.classList.add('group__dot--right', 'group__dot--active');
                 elemMarker.appendChild(elemDotB);
+
+                let elemCounter = document.createElement('div');
+                elemCounter.classList.add('group__counter');
+                elemMarker.appendChild(elemCounter);
+                elemCounter.textContent = '0';
             });
         });
     }
@@ -86,6 +91,7 @@ export class Skills {
         this.skillContainers.forEach((item,index)=>{
             item.skills.forEach((item,index)=>{
                 //item.marker.style.width = `${item.power/this.pointer*100}%`;
+                item.marker.setAttribute('sb-power',item.power);
                 item.marker.setAttribute('sb-expand',item.power/this.pointer*100);
             });
         });

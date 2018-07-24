@@ -1,6 +1,8 @@
-//import 'jquery';
+import 'jquery';
 import 'jquery-ui';
 import anime from 'animejs'
+
+import {Anchor} from './Anchor';
 
 export class Sidebar {
     constructor(){
@@ -32,22 +34,7 @@ export class Sidebar {
             newInPoint.classList.add('sidebar__inpoint');
             newPoint.appendChild(newInPoint);
 
-            this.anchors.push({
-                obj: item,
-                w: item.scrollWidth,
-                h: item.scrollHeight,
-                y: rect.top,
-                x: rect.left,
-                title: title,
-                item: newItem,
-                inpoint: newInPoint,
-                state: false
-            });
-            newItem.addEventListener('click',() => {
-                $('.container').animate({
-                    scrollTop: rect.top
-                },500);
-            });
+            this.anchors.push(new Anchor(item, item.scrollWidth, item.scrollHeight, rect.top, rect.left, title, newItem, newInPoint, false));
         });
         this.inMove();
 
