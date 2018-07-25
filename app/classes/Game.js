@@ -21,9 +21,21 @@ export class Game {
         this.lost = false;
         this.started = false;
 
+        this.solution = 'stop';
+        this.secret = '';
+
         this.createApple();
     }
     pushKey(evt){
+
+        this.secret += (String.fromCharCode(evt.keyCode)).toLocaleLowerCase();
+        if(this.secret[this.secret.length-1] != this.solution[this.secret.length-1]){
+            this.secret = '';
+        }
+        if(this.secret.length == this.solution.length && this.secret == this.solution) {
+            this.lost = true;   
+        }
+
         switch(evt.keyCode){
             //top
             case 38:

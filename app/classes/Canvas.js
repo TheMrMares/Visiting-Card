@@ -1,3 +1,5 @@
+import anime from 'animejs';
+
 import {Tile} from './Tile';
 import {Game} from './Game';
 
@@ -56,7 +58,46 @@ export class Canvas {
             mode: mode
         });
     }
-
+    gameIn(){
+        let snakeIn = document.querySelectorAll('.snake__in')[0];
+        let snakeOut = document.querySelectorAll('.snake__out')[0];
+        anime({
+            targets: [snakeIn,document.querySelector('.container, .sidebar')],
+            opacity: 0,
+            duration: 1000,
+            easing: 'easeInOutQuart',
+            complete: () => {
+                snakeIn.style.display = 'none';
+                snakeOut.style.display = 'block';
+                anime({
+                    targets: snakeOut,
+                    opacity: 1,
+                    duration: 1000,
+                    easing: 'easeInOutQuart',
+                });
+            }
+        });
+    }
+    gameOut(){
+        let snakeIn = document.querySelectorAll('.snake__in')[0];
+        let snakeOut = document.querySelectorAll('.snake__out')[0];
+        anime({
+            targets: snakeOut,
+            opacity: 0,
+            duration: 1000,
+            easing: 'easeInOutQuart',
+            complete: () => {
+                snakeOut.style.display = 'none';
+                snakeIn.style.display = 'block';
+                anime({
+                    targets: [snakeIn,document.querySelector('.container, .sidebar')],
+                    opacity: 1,
+                    duration: 1000,
+                    easing: 'easeInOutQuart',
+                });
+            }
+        });
+    }
     //game fxs
     pushKey(evt){
         switch(this.gamestate){
@@ -68,6 +109,7 @@ export class Canvas {
                 if(this.secret.length == this.solution.length && this.secret == this.solution) {
                     this.game = new Game(this.drawground, Math.floor(this.columns/2), Math.floor(this.rows/2), this.tw,this.th,this.w,this.h,this.columns,this.rows);
                     this.gamestate = true;
+                    this.gameIn();
                     this.secret = '';
                 }
             break;
@@ -163,7 +205,7 @@ export class Canvas {
             if(callback == false){
                 this.gamestate = false;
                 delete this.game;
-                
+                this.gameOut();
             }
         }
     }
