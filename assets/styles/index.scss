@@ -1,12 +1,16 @@
 @import 'templates.scss';
 @import 'variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+@font-face {
+    font-family: myOswald;
+    src: url('./../fonts/Oswald-Regular.ttf');
+}
 
 html, body {
     margin: 0;
     padding: 0;
     color: $fair;
-    font-family: 'Oswald', sans-serif;
+    font-family: myOswald, sans-serif;
     min-width: 1600px;
     width: 100%;
 	height: 100%;
@@ -46,7 +50,7 @@ button {
     background: none;
     border: none;
     outline: none;
-    font-family: 'Oswald', sans-serif;
+    font-family: myOswald, sans-serif;
 }
 img {
     position: relative;

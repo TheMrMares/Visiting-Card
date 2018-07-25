@@ -101,7 +101,7 @@ module.exports = {
             },
             // IMAGES
             {
-                test: /\.(jpe?g|png|gif|mp4|mp3)$/,
+                test: /\.(jpe?g|png|gif|mp4|mp3|ttf)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[path][name].[ext]'

@@ -2,8 +2,9 @@
 import 'styles/index.scss';
 import 'images/slog1mincom.png';
 import 'images/slog2mincom.png';
-import 'images/favicon1min.png';
+import 'images/favicon1mincom.png';
 import 'sounds/hiphop1.mp3';
+import 'fonts/Oswald-Regular.ttf';
 
 // Your app
 import 'jquery';

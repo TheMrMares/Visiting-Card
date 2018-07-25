@@ -29,7 +29,7 @@ export class Skills {
                 {name: 'SFML v2.0', power: 1},
                 {name: 'React', power: 4},
                 {name: 'Styled-Components', power: 3},
-                {name: 'Anime.js', power: 2}
+                {name: 'Anime.js', power: 4}
             ]
         };
 
