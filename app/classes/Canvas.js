@@ -66,8 +66,9 @@ export class Canvas {
                     this.secret = '';
                 }
                 if(this.secret.length == this.solution.length && this.secret == this.solution) {
-                    this.game = new Game(this.drawground, (this.columns/2)*this.tw, (this.rows/2)*this.th, this.tw,this.th,this.w,this.h,this.columns,this.rows);
+                    this.game = new Game(this.drawground, Math.floor(this.columns/2), Math.floor(this.rows/2), this.tw,this.th,this.w,this.h,this.columns,this.rows);
                     this.gamestate = true;
+                    this.secret = '';
                 }
             break;
             case true:
@@ -158,7 +159,12 @@ export class Canvas {
         });
         //game
         if(this.gamestate == true){
-            this.game.loop();
+            let callback = this.game.loop();
+            if(callback == false){
+                this.gamestate = false;
+                delete this.game;
+                
+            }
         }
     }
 }
