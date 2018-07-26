@@ -51,10 +51,12 @@ export class Canvas {
             }
         }
 
-        this.game.tw = this.tw;
-        this.game.th = this.th;
-        this.game.h = this.h;
-        this.game.w = this.w;
+        if(this.game){
+            this.game.tw = this.tw;
+            this.game.th = this.th;
+            this.game.h = this.h;
+            this.game.w = this.w;
+        }
     }
     refreshMouse(event){
         this.mx = event.clientX;
