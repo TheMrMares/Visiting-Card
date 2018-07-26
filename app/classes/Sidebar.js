@@ -39,6 +39,16 @@ export class Sidebar {
         this.inMove();
 
     }
+    refreshAnchors(){
+        let myAnchors = document.querySelectorAll('.anchor');
+        let compense = null;
+        myAnchors.forEach((item, index) => {
+            let anchor = this.anchors[index];
+            let rect = anchor.obj.getBoundingClientRect();
+            let compense = this.anchors[0].obj.getBoundingClientRect().top;
+            anchor.y = rect.top - compense;
+        });
+    }
     inMove() {
         let scrollTop = document.querySelectorAll('.container')[0].scrollTop;
         let websiteHeight = document.querySelectorAll('.container')[0].scrollHeight - window.innerHeight;

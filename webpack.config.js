@@ -40,11 +40,26 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'index.ejs'),
-            title: appHtmlTitle
+            title: appHtmlTitle,
+            minify   : {
+                html5                          : true,
+                collapseWhitespace             : true,
+                minifyCSS                      : true,
+                minifyJS                       : true,
+                minifyURLs                     : false,
+                removeAttributeQuotes          : true,
+                removeComments                 : true,
+                removeEmptyAttributes          : true,
+                removeOptionalTags             : true,
+                removeRedundantAttributes      : true,
+                removeScriptTypeAttributes     : true,
+                removeStyleLinkTypeAttributese : true,
+                useShortDoctype                : true
+            }
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
-            chunkFilename: '[id].css',
+            chunkFilename: '[id].css'
         })
     ],
     module: {

@@ -11,8 +11,7 @@ export class Anchor {
         this.item = item;
         this.inpoint = inpoint;
         this.state = state;
-
-        this.item.addEventListener('click',this.scrollTo.bind(this));
+        this.event = this.item.addEventListener('click',this.scrollTo.bind(this));
     }
     scrollTo() {
         anime({
