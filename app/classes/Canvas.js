@@ -5,6 +5,8 @@ import {Game} from './Game';
 
 export class Canvas {
     constructor(canvas,framerate,rows,columns){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         this.rows = rows;
         this.columns = columns;
         this.canvas = canvas;
@@ -34,6 +36,25 @@ export class Canvas {
         this.interval = window.setInterval(() =>{
             this.loop();
         }, this.framerate);
+    }
+    refreshDimensions(){
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.h = window.innerHeight;
+        this.w = window.innerWidth;
+        this.tw = this.canvas.width/this.columns;
+        this.th = this.canvas.height/this.rows;
+        this.tiles = [];
+        for(let i = 0; i < this.rows;i++){
+            for(let k = 0; k < this.columns;k++){
+                this.tiles.push(new Tile(this.drawground, k*this.tw, i*this.th, this.tw,this.th));
+            }
+        }
+
+        this.game.tw = this.tw;
+        this.game.th = this.th;
+        this.game.h = this.h;
+        this.game.w = this.w;
     }
     refreshMouse(event){
         this.mx = event.clientX;

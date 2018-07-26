@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Event
     window.addEventListener('resize',() => {
-        console.log('xd');
+        cv.refreshDimensions();
         sb.refreshAnchors();
     });
     document.querySelectorAll('.school__dot, .cert__dot, .group__dot, .group__dot--left, .group__dot--right, .media__dot--left, .media__dot--right').forEach((item, index) => {
