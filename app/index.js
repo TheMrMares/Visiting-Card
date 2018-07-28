@@ -54,9 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click',() => {
         cv.addRipple(0,70);
         audio.play();
-        ld.hide(()=> {
-            sp.check();
-        });
+        if(ld.isHiding == false){
+            ld.hide(()=> {
+                sp.check();
+            });
+        }
     });
     document.querySelectorAll('.container')[0].addEventListener('scroll', ()=> {
         sb.inMove();

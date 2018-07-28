@@ -8,6 +8,7 @@ export class Loader {
         this.spin = document.querySelectorAll('.loader__spin')[0];
         this.greetings = document.querySelectorAll('.loader__greetings')[0];
         this.content = document.querySelectorAll('.container')[0];
+        this.isHiding = false;
     }
     show(callback){
         let duration = this.duration;
@@ -37,6 +38,7 @@ export class Loader {
         });
     }
     hide(callback){
+        this.isHiding = true;
         let duration = this.duration;
         let tl = anime.timeline();
         tl.add({
@@ -47,6 +49,7 @@ export class Loader {
             offset: 0,
             complete: () => {
                 this.loader.style.display = 'none';
+                this.isHiding = false;
                 callback();
             }
         });
