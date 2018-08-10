@@ -16,20 +16,22 @@ export class Skills {
                 {name: 'MySQL', power: 5},
                 {name: 'HTML5', power: 7},
                 {name: 'SCSS / SASS', power: 5},
-                {name: 'Git', power: 5}
+                {name: 'Git', power: 5},
+                {name: 'React', power: 5}
             ]
         };
         this.skillContainers[2] = {
             obj: document.querySelectorAll('.group > .group__skills')[2],
             skills: [
+                {name: 'Redux', power: 4},
                 {name: 'jQuery', power: 4},
                 {name: 'Gulp', power: 3},
                 {name: 'Webpack', power: 3},
                 {name: 'C++', power: 2},
                 {name: 'SFML v2.0', power: 1},
-                {name: 'React', power: 4},
                 {name: 'Styled-Components', power: 3},
-                {name: 'Anime.js', power: 4}
+                {name: 'Anime.js', power: 4},
+                {name: 'Firebase', power: 2}
             ]
         };
 
